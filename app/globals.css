@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+}
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -66,4 +75,54 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* ==== clerk class override ===== */
+.cl-socialButtonsBlockButtonText {
+  color: white;
+}
+.cl-navbarButtons {
+  color: white;
+}
+.cl-navbarButton {
+  color: aliceblue;
+}
+.cl-userButtonPopoverActionButton:hover {
+  color: rgb(188, 188, 188);
+}
+.cl-providerIcon__github {
+  filter: invert(1);
+}
+
+.cl-userButtonPopoverActionButtonIcon {
+  color: white;
+}
+
+.cl-logoBox {
+  height: 40px;
+}
+.cl-dividerLine {
+  background: #252a41;
+  height: 2px;
+}
+
+.cl-socialButtonsIconButton {
+  border: 3px solid #565761;
+}
+
+.cl-internal-wkkub3 {
+  color: white;
+}
+.cl-userButtonPopoverActionButton {
+  color: white;
+}
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.glassmorphism2 {
+  background: rgba(18, 17, 17, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
