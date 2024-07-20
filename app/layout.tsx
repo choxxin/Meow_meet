@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Toaster } from "@/components/ui/toaster";
+import "@stream-io/video-react-sdk/dist/css/styles.css";
+
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -31,7 +34,9 @@ export default function RootLayout({
           },
         }}
       >
-        <body className={`${inter.className} bg-dark-2`}>{children}</body>
+        <body className={`${inter.className} bg-dark-2`}>
+          {children} <Toaster />
+        </body>
       </ClerkProvider>
     </html>
   );
