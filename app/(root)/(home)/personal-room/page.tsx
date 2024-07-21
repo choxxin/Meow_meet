@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import VideoPlayer from "@/components/Videoplayer";
 import React, { useState } from "react";
 
-const page = () => {
+const Page = () => {
   const [gifIndex, setgifIndex] = useState<number>(5);
   const handleRandomGif = () => {
     // Generate a random index
@@ -100,4 +100,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
