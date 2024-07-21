@@ -7,15 +7,33 @@ import {
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Button } from "./ui/button";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/components/ui/use-toast";
 const Meetingsetup = ({
   setissetupcompleted,
 }: {
   setissetupcompleted: (value: boolean) => void;
 }) => {
+  const { toast } = useToast();
   const [ismiccamToggleOn, setismiccamToggleOn] = useState(false);
-
+  const router = useRouter();
+  const [currentUrl, setCurrentUrl] = useState("");
   const call = useCall();
-
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(currentUrl);
+      toast({
+        title: "Meeting Link Copied",
+      });
+    } catch (err) {
+      toast({
+        title: "Meeting Link Copied",
+      });
+    }
+  };
+  useEffect(() => {
+    setCurrentUrl(window.location.href);
+  }, [router]);
   if (!call) throw new Error("Stream call must be within StreamCall Component");
 
   useEffect(() => {
@@ -43,16 +61,26 @@ const Meetingsetup = ({
         </label>
         <DeviceSettings />
       </div>
-      <Button
-        className="bg-green-500 rounded-md px-4 py-2.5 "
-        onClick={() => {
-          call.join();
-          setissetupcompleted(true);
-        }}
-      >
-        {" "}
-        Join Meeting
-      </Button>
+
+      <div className="flex gap-6">
+        <Button
+          className="bg-green-500 rounded-md px-4 py-2.5 "
+          onClick={() => {
+            call.join();
+            setissetupcompleted(true);
+          }}
+        >
+          {" "}
+          Join Meeting
+        </Button>
+        <Button
+          className="bg-blue-1 rounded-md px-4 py-2.5 "
+          onClick={copyToClipboard}
+        >
+          {" "}
+          Copy Link
+        </Button>
+      </div>
     </div>
   );
 };
