@@ -62,35 +62,41 @@ const page = () => {
     "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTZta2lzbzM5NWQ5NGlvejdyc2JoNm9yZHA0aHdlNXVmNmIzZjZnNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RlHpuVwtbvdIBXzm2z/giphy.webp",
     "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpnYmJwcGp6YWZ2dW51aW93NWcybHAwMWE3djV0aWl0NTVpeHdhdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SXCTtRsU9GmApnfWRi/giphy.webp",
   ];
+  // <div className="  glass h-full w-full mx-5">
+  //         <VideoPlayer />
+  //       </div>
   return (
-    <section
-      className="flex flex-col size-full gap-10  "
-      style={{
-        backgroundImage: `url(${arr[gifIndex]})`,
-        backgroundSize: "100% 100%", // Ensures the image covers the entire background
-        backgroundRepeat: "no-repeat", // Prevents the image from repeating
-        backgroundPosition: "center", // Centers the image within the container
-      }}
-    >
-      <div className="flex flex-col gap-4 ">
-        <h1 className="text-3xl font-bold text-white font-serif">
-          Lofi Stream
-        </h1>
-        <Button onClick={handleRandomGif} className="w-24 h-14">
-          Change GIF
-        </Button>
-      </div>
+    <div className="flex flex-col flex-between gap-14 ">
+      <section
+        className="flex flex-col size-full gap-10 max-h-86 "
+        style={{
+          backgroundImage: `url(${arr[gifIndex]})`,
+          backgroundSize: "100% 80%", // Ensures the image covers the entire background
+          backgroundRepeat: "no-repeat", // Prevents the image from repeating
+          backgroundPosition: "center", // Centers the image within the container
+        }}
+      >
+        <div className="flex flex-col gap-4 ">
+          <h1 className="text-3xl font-bold text-white font-serif">
+            Lofi Stream
+          </h1>
+          <Button onClick={handleRandomGif} className="w-24 h-14">
+            Change GIF
+          </Button>
+        </div>
 
-      <div className="w-full flex   gap-8 min-h-14  mt-80     ">
+        <div className="w-full flex   gap-8 min-h-14  mt-80     ">
+          <div className="wave bg-lightblue h-24 w-full my-2 flex justify-center items-center"></div>
+          <div className="wave bg-lightgreen h-24 w-full my-2 flex justify-center items-center"></div>
+          <div className="wave bg-lightcoral h-24 w-full my-2 flex justify-center items-center"></div>
+        </div>
+      </section>
+      <div>
         <div className="  glass h-full w-full mx-5">
           <VideoPlayer />
         </div>
-
-        <div className="wave bg-lightblue h-24 w-full my-2 flex justify-center items-center"></div>
-        <div className="wave bg-lightgreen h-24 w-full my-2 flex justify-center items-center"></div>
-        <div className="wave bg-lightcoral h-24 w-full my-2 flex justify-center items-center"></div>
       </div>
-    </section>
+    </div>
   );
 };
 
