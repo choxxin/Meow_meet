@@ -92,7 +92,7 @@ const Page = () => {
         </div>
       </section>
       <div>
-        <div className="  glass h-full w-full mx-5">
+        <div className="  glass h-full w-full mb-10 sm:mx-5 ">
           <VideoPlayer />
         </div>
       </div>

@@ -93,7 +93,7 @@ const VideoPlayer: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-between gap-16 items-center border-2 ">
+    <div className="flex flex-wrap gap-12   items-center glass    ">
       <div className="flex flex-col gap-2  ml-3  ">
         <YouTube
           videoId={videoIds[currentVideoIndex]} // Replace with your YouTube video ID

@@ -131,9 +131,11 @@
   height: 90px; /* Set your desired height */
 }
 .glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(3px) saturate(174%);
+  -webkit-backdrop-filter: blur(3px) saturate(174%);
+  background-color: rgba(227, 227, 247, 0.15);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
 .miko {

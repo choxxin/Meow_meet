@@ -11,6 +11,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Meow meet",
   description: "Video calling app",
+  icons: {
+    icon: ["/images/Untitled-1.png"],
+  },
 };
 
 export default function RootLayout({
