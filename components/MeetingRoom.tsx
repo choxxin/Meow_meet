@@ -1,5 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { FaRegCopy } from "react-icons/fa";
 import {
   CallControls,
   CallingState,
@@ -18,21 +20,39 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Endcallbutton from "./Endcallbutton";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LayoutList, Loader, Users } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 type callLayoutType = "grid" | "speaker-left" | "speaker-right";
 
 const MeetingRoom = () => {
+  const { toast } = useToast();
   const searchParams = useSearchParams();
   const isPersonalRoom = !!searchParams.get("personal");
   const router = useRouter();
   const [layout, setlayout] = useState<callLayoutType>("speaker-left");
   const [showParticipants, setShowParticipants] = useState(false);
   const { useCallCallingState } = useCallStateHooks();
-
+  const [currentUrl, setCurrentUrl] = useState("");
   // for more detail about types of CallingState see: https://getstream.io/video/docs/react/ui-cookbook/ringing-call/#incoming-call-panel
   const callingState = useCallCallingState();
-  if (callingState !== CallingState.JOINED) return <Loader />;
+
+  useEffect(() => {
+    setCurrentUrl(window.location.href);
+  }, []);
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(currentUrl);
+      toast({
+        title: "Meeting Link Copied",
+      });
+    } catch (err) {
+      toast({
+        title: "Meeting Link didn't Copied",
+      });
+    }
+  };
 
   const CallLayout = () => {
     switch (layout) {
@@ -46,6 +66,7 @@ const MeetingRoom = () => {
         return <SpeakerLayout participantsBarPosition="right" />;
     }
   };
+  if (callingState !== CallingState.JOINED) return <Loader />;
   return (
     <section className="relative h-screen w-full overflow-hidden pt-4 text-white">
       <div className="relative flex size-full items-center justify-center">
@@ -88,13 +109,18 @@ const MeetingRoom = () => {
                 <DropdownMenuSeparator className="border-dark-1" />
               </div>
             ))}
-            <div className="border-dark-1 bg-dark-1 text-white">Copy</div>
+            {/* <div className="border-dark-1 bg-dark-1 text-white">Copy</div> */}
           </DropdownMenuContent>
         </DropdownMenu>
         <CallStatsButton />
         <button onClick={() => setShowParticipants((prev) => !prev)}>
           <div className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]">
             <Users size={20} className="text-white" />
+          </div>
+        </button>
+        <button onClick={copyToClipboard}>
+          <div className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]">
+            <FaRegCopy size={20} className="text-white" />
           </div>
         </button>
         {!isPersonalRoom && <Endcallbutton />}
