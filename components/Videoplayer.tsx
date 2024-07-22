@@ -93,14 +93,14 @@ const VideoPlayer: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-wrap gap-12   items-center glass    ">
-      <div className="flex flex-col gap-2  ml-3  ">
+    <div className="flex flex-wrap gap-5  items-center glass sm:gap-12   ">
+      <div className="flex flex-col  gap-2 ml-9 sm:ml-3  ">
         <YouTube
           videoId={videoIds[currentVideoIndex]} // Replace with your YouTube video ID
           opts={opts}
           onReady={onReady}
         />
-        <div className="hover:text-gray-800 text-xl font-bold  text-gray-900">
+        <div className="hover:text-gray-800 text-xl font-bold  text-gray-900 ml-16">
           {title[currentVideoIndex]}
         </div>
         <div className="flex gap-8">
@@ -127,7 +127,7 @@ const VideoPlayer: React.FC = () => {
         </div>
       </div>
 
-      <div className="mr-5 gap-5">
+      <div className="flex  justify-center gap-5 ml-14  sm:mr-5">
         <p className="text-gray-300 font-extrabold text-xl">Volume</p>
 
         <input
