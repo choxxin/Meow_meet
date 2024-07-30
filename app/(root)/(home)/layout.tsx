@@ -4,6 +4,12 @@ import Sidebar from "@/components/Sidebar";
 const HomeLayout = ({ children }: { children: ReactNode }) => {
   return (
     <main className="relative">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="google764987eda22ad75c.html"
+        />
+      </head>
       <Navbar />
       <div className="flex">
         <Sidebar />
