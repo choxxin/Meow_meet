@@ -7,6 +7,7 @@ const SignInPage = () => {
         name="google-site-verification"
         content="WmZU7-Nrp0T_pfG3F9n6IHwR1fA5L9Q_P-gCJwyQ2vU"
       />
+    
       <SignIn />
     </main>
   );
